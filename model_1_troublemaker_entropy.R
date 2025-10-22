@@ -64,7 +64,7 @@ data {
   int<lower=1> N;            // subjects
   int<lower=2> T;            // time points
   matrix[N, T] x;            // data: rows are subjects
-  vector[T] t;               // time index (centered recommended)
+  vector[T] t;               // time index
   int<lower=1> K;            // number of classes
 }
 parameters {
@@ -414,3 +414,4 @@ cat("Mean entropy when INCORRECT:",
 
 # Optional: save full table to CSV
 # write.csv(entropy_table, "entropy_analysis.csv", row.names = FALSE)
+
