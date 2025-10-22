@@ -51,10 +51,9 @@ legend("topright",
        legend = c("G1: stays at 1", "G2: dec 1→0", "G3: inc 0→1", "G4: stays at 0"),
        col = group_colors, lty = 1, lwd = 2, bty = "n")
 
-# -------------------------
+
 # Stan model (random effects + mixture)
-# IMPORTANT: avoid vector literal priors; do elementwise
-# -------------------------
+
 stan_code <- '
 data {
   int<lower=1> N;
@@ -327,4 +326,5 @@ for (idx in 1:min(6, length(uncertain_subjects))) {
   for (g in 1:K) if (all(is.finite(pred_means[, g]))) lines(1:T, pred_means[, g], col = group_colors[g], lty = 2, lwd = 1.5)
 }
 par(mfrow = c(1, 1))
+
 
