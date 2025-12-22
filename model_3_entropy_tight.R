@@ -14,8 +14,7 @@ K <- 4
 X <- matrix(0, nrow = N, ncol = T)
 true_group_assignments <- integer(N)
 
-# Variance settings: group 4 is the "troublemaker"
-group_sigmas <- c(0.05, 0.05, 0.25, 0.05)  # high variance for group 3
+group_sigmas <- c(0.05, 0.05, 0.05, 0.05)  # high variance for group 3
 
 for (i in 1:N) {
   g <- sample(1:K, 1)
@@ -372,4 +371,5 @@ cat("Mean entropy when CORRECT:",
     round(mean(entropy[true_group_assignments == inferred_groups]), 3), "\n")
 cat("Mean entropy when INCORRECT:", 
     round(mean(entropy[true_group_assignments != inferred_groups]), 3), "\n")
+
 
