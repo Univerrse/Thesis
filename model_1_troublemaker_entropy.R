@@ -14,8 +14,8 @@ K <- 4
 matrix <- matrix(0, nrow = N, ncol = T)
 true_group_assignments <- integer(N)
 
-# Variance settings: group 4 will be the "troublemaker"
-group_sigmas <- c(0.05, 0.25, 0.25, 0.05)  # high variance for group 4
+# Variance settings: group 3 will be the "troublemaker"
+group_sigmas <- c(0.05, 0.05, 0.25, 0.05)  # high variance for group 4
 
 for (i in 1:N) {
   group <- sample(1:K, 1)
@@ -414,4 +414,5 @@ cat("Mean entropy when INCORRECT:",
 
 # Optional: save full table to CSV
 # write.csv(entropy_table, "entropy_analysis.csv", row.names = FALSE)
+
 
