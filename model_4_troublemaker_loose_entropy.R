@@ -82,22 +82,22 @@ model {
   sigma ~ normal(0, 0.1);
   theta ~ dirichlet(rep_vector(1.0, 4));
 
-  mu_alpha[1] ~ normal(1.0, 0.05);
-  mu_alpha[2] ~ normal(0.9, 0.05);
-  mu_alpha[3] ~ normal(0.1, 0.05);
-  mu_alpha[4] ~ normal(0.0, 0.05);
+  mu_alpha[1] ~ normal(1.0, 0.2);
+  mu_alpha[2] ~ normal(0.9, 0.2);
+  mu_alpha[3] ~ normal(0.1, 0.2);
+  mu_alpha[4] ~ normal(0.0, 0.2);
   sigma_alpha ~ normal(0.05, 0.02) T[0,];
 
-  mu_rho[1] ~ normal(0.1, 0.05);
-  mu_rho[2] ~ normal(0.8, 0.05);
-  mu_rho[3] ~ normal(0.92, 0.05);
-  mu_rho[4] ~ normal(0.1, 0.05);
+  mu_rho[1] ~ normal(0.1, 0.2);
+  mu_rho[2] ~ normal(0.8, 0.2);
+  mu_rho[3] ~ normal(0.92, 0.2);
+  mu_rho[4] ~ normal(0.1, 0.2);
   sigma_rho ~ normal(0.05, 0.02) T[0,];
 
-  beta[1] ~ normal(1.0, 0.05);
-  beta[2] ~ normal(0.0, 0.05);
-  beta[3] ~ normal(0.0, 0.05);
-  beta[4] ~ normal(0.0, 0.05);
+  beta[1] ~ normal(1.0, 0.2);
+  beta[2] ~ normal(0.0, 0.2);
+  beta[3] ~ normal(0.0, 0.2);
+  beta[4] ~ normal(0.0, 0.2);
 
   alpha_raw ~ normal(0, 1);
   rho_raw   ~ normal(0, 1);
@@ -326,5 +326,6 @@ for (idx in 1:min(6, length(uncertain_subjects))) {
   for (g in 1:K) if (all(is.finite(pred_means[, g]))) lines(1:T, pred_means[, g], col = group_colors[g], lty = 2, lwd = 1.5)
 }
 par(mfrow = c(1, 1))
+
 
 
