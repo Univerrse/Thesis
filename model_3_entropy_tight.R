@@ -21,19 +21,18 @@ for (i in 1:N) {
   true_group_assignments[i] <- g
   e <- rnorm(T, 0, group_sigmas[g])
   
-  x <- numeric(T)
   if (g == 1) {
-    x[1] <- 1
-    for (t in 2:T) x[t] <- 1 + 0.1 * x[t - 1] + e[t]
+    x <- numeric(T); x[1] <- 1
+    for (t in 2:T) x[t] <- 1 + 0.1 * x[t - 1] + e[t] # stays around 1
   } else if (g == 2) {
-    x[1] <- 1
-    for (t in 2:T) x[t] <- 1 - 0.05 * t + 0.1 * x[t - 1] + e[t]
+    x <- numeric(T); x[1] <- 1
+    for (t in 2:T) x[t] <- 0.8 * x[t - 1] + e[t]     # decreases 1 → 0
   } else if (g == 3) {
-    x[1] <- 0
-    for (t in 2:T) x[t] <- 0 + 0.05 * t + 0.1 * x[t - 1] + e[t]
+    x <- numeric(T); x[1] <- 0
+    for (t in 2:T) x[t] <- 0.1 + 0.92 * x[t - 1] + e[t] # increases 0 → 1
   } else {
-    x[1] <- 0
-    for (t in 2:T) x[t] <- 0 + 0.1 * x[t - 1] + e[t]
+    x <- numeric(T); x[1] <- 0
+    for (t in 2:T) x[t] <- 0 + 0.1 * x[t - 1] + e[t] # stays around 0
   }
   X[i, ] <- x
 }
@@ -371,5 +370,6 @@ cat("Mean entropy when CORRECT:",
     round(mean(entropy[true_group_assignments == inferred_groups]), 3), "\n")
 cat("Mean entropy when INCORRECT:", 
     round(mean(entropy[true_group_assignments != inferred_groups]), 3), "\n")
+
 
 
